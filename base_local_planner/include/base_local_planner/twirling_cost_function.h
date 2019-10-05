@@ -57,7 +57,15 @@ public:
 
   double scoreTrajectory(Trajectory &traj);
 
+  void setParams(double max_turning_radian, double twirling_scale, double wheelbase);
+
   bool prepare() {return true;};
+
+private:
+  double max_turning_radian_;
+  double twirling_scale_;
+  double wheelbase_;
+
 };
 
 } /* namespace base_local_planner */

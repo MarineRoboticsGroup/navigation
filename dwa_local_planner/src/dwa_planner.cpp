@@ -83,7 +83,7 @@ namespace dwa_local_planner {
     // obstacle costs can vary due to scaling footprint feature
     obstacle_costs_.setParams(config.max_vel_trans, config.max_scaling_factor, config.scaling_speed);
 
-    twirling_costs_.setScale(config.twirling_scale);
+    twirling_costs_.setParams(config.max_turning_radian, config.twirling_scale, config.wheelbase);
 
     int vx_samp, vy_samp, vth_samp;
     vx_samp = config.vx_samples;

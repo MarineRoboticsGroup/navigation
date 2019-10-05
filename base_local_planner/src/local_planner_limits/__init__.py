@@ -23,13 +23,13 @@ def add_generic_localplanner_params(gen):
     gen.add("max_vel_y", double_t, 0, "The maximum y velocity for the robot in m/s", 0.1)
     gen.add("min_vel_y", double_t, 0, "The minimum y velocity for the robot in m/s", -0.1)
 
-    gen.add("max_vel_theta", double_t, 0, "The absolute value of the maximum rotational velocity for the robot in rad/s",  1.0, 0)
-    gen.add("min_vel_theta", double_t, 0, "The absolute value of the minimum rotational velocity for the robot in rad/s", 0.4, 0)
+    gen.add("max_vel_theta", double_t, 0, "The absolute value of the maximum rotational velocity for the robot in rad/s",  1.0)
+    gen.add("min_vel_theta", double_t, 0, "The absolute value of the minimum rotational velocity for the robot in rad/s", 0.4)
 
     # acceleration
-    gen.add("acc_lim_x", double_t, 0, "The acceleration limit of the robot in the x direction", 2.5, 0, 20.0)
-    gen.add("acc_lim_y", double_t, 0, "The acceleration limit of the robot in the y direction", 2.5, 0, 20.0)
-    gen.add("acc_lim_theta", double_t, 0, "The acceleration limit of the robot in the theta direction", 3.2, 0, 20.0)
+    gen.add("acc_lim_x", double_t, 0, "The acceleration limit of the robot in the x direction", 2.5)
+    gen.add("acc_lim_y", double_t, 0, "The acceleration limit of the robot in the y direction", 2.5)
+    gen.add("acc_lim_theta", double_t, 0, "The acceleration limit of the robot in the theta direction", 3.2)
     gen.add("acc_lim_trans", double_t, 0, "The absolute value of the maximum translational acceleration for the robot in m/s^2", 0.1, 0)
 
     gen.add("prune_plan", bool_t, 0, "Start following closest point of global plan, not first point (if different).", False)
