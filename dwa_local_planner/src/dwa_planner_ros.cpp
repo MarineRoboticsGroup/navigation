@@ -100,6 +100,7 @@ namespace dwa_local_planner {
       costmap_2d::Costmap2DROS* costmap_ros) {
     if (! isInitialized()) {
 
+      //ROS_INFO("what is private_nh's name:  %s", name.c_str());
       ros::NodeHandle private_nh("~/" + name);
       g_plan_pub_ = private_nh.advertise<nav_msgs::Path>("global_plan", 1);
       l_plan_pub_ = private_nh.advertise<nav_msgs::Path>("local_plan", 1);

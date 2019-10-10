@@ -25,6 +25,7 @@ LatchedStopRotateController::LatchedStopRotateController(const std::string& name
   ros::NodeHandle private_nh("~/" + name);
   private_nh.param("latch_xy_goal_tolerance", latch_xy_goal_tolerance_, false);
 
+  latch_xy_goal_tolerance_ = false;
   rotating_to_goal_ = false;
 }
 
@@ -248,7 +249,7 @@ bool LatchedStopRotateController::computeVelocityCommandsStopRotate(geometry_msg
         ROS_INFO("Error when stopping.");
         return false;
       }
-      ROS_DEBUG("Stopping...");
+      ROS_INFO("Latched xy, Stopping...");
     }
     //if we're stopped... then we want to rotate to goal
     else {
@@ -266,7 +267,7 @@ bool LatchedStopRotateController::computeVelocityCommandsStopRotate(geometry_msg
         ROS_INFO("Error when rotating.");
         return false;
       }
-      ROS_DEBUG("Rotating...");
+      ROS_INFO("Latched xy, Rotating...");
     }
   }
 
