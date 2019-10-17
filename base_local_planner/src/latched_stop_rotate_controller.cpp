@@ -24,8 +24,10 @@ namespace base_local_planner {
 LatchedStopRotateController::LatchedStopRotateController(const std::string& name) {
   ros::NodeHandle private_nh("~/" + name);
   private_nh.param("latch_xy_goal_tolerance", latch_xy_goal_tolerance_, false);
-
-  latch_xy_goal_tolerance_ = false;
+  if (latch_xy_goal_tolerance_){
+	  ROS_INFO("the state of latch_xy_goal_tolerance_ is true ");
+  }
+  //latch_xy_goal_tolerance_ = false;
   rotating_to_goal_ = false;
 }
 

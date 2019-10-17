@@ -6,7 +6,7 @@
  */
 
 #include <base_local_planner/twirling_cost_function.h>
-
+#include <ros/ros.h>
 #include <math.h>
 
 namespace base_local_planner {
@@ -20,8 +20,8 @@ void TwirlingCostFunction::setParams(double max_turning_radian, double twirling_
 
 double TwirlingCostFunction::scoreTrajectory(Trajectory &traj) {
   //chadchadchadchad
-  double v = traj.xv_;
-  double vtheta = traj.thetav_;
+  double v = fabs(traj.xv_);
+  double vtheta = fabs(traj.thetav_);
   double turning_angle;
   double res;
 
@@ -29,16 +29,21 @@ double TwirlingCostFunction::scoreTrajectory(Trajectory &traj) {
       res = 9999.0;
   }
   else{
-    turning_angle = fabs( atan2(vtheta * wheelbase_, v) );
+    turning_angle =  atan2(vtheta * wheelbase_, v);
     // if the turning angle is too large we remove this sample by increasing its cost
     if (turning_angle <= max_turning_radian_) { //0.348 radians is equal to 20 degrees 
-      res = turning_angle/ ( 1.0 + fabs(v));
+      res = turning_angle/ ( 1.0 + v);
     }
     else {
       res = 9999.0;
     }
   }
   //chadchadchadchad
+  if( v <0){
+    ROS_INFO("the sampled velocity is %lf vtheta is %lf turning angle is %lf with a score of %lf", v, vtheta, turning_angle, res);
+  }
+
+  
   //ROS_INFO("TWIRLING_COST_FUNCTION");
   return res * twirling_scale_;  // add cost for making the robot spin
 }

@@ -71,7 +71,7 @@ namespace nav_core {
 
       /**
        * @brief  Constructs the local planner
-       * @param name The name to give this instance of the local planner
+       * @param name The name to give this of the local planner
        * @param tf A pointer to a transform listener
        * @param costmap_ros The cost map to use for assigning costs to local plans
        */
